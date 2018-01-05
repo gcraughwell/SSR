@@ -2,8 +2,8 @@ import React from 'react';
 
 const Home = () => (
   <div>
-    <h1>Honey I am the home component!</h1>
+    <div>Honey I am the very BEST home component!</div>
+    <button onClick={() => console.log('Pressed Me!')}>Press Me!</button>
   </div>
 );
-
 export default Home;

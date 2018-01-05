@@ -1,15 +1,14 @@
-//route file for our app on the server
+import express from 'express';
+import renderer from './helpers/renderer';
+import createStore from './helpers/createStore';
 
-const express = require('express');
-const React = require('react');
-const renderToSting = require('react-dom/server').renderToString;
-const Home = require('./client/components/home').default;
 const app = express();
 
-app.get('/', (req, res) => {
-  const content = renderToSting(<Home />);
-
-  res.send(content);
+app.use(express.static('public'));
+//home route
+app.get('*', (req, res) => {
+  const store = createStore();
+  res.send(renderer(req, store));
 });
 
 app.listen(3000, () => {
